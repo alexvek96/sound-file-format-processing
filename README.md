@@ -118,21 +118,35 @@ using fprint. Bad format must end the procedure instantly.
 - Example of good format:
 
 $ ./wavproc < 5MB.wav
+
 size of file: 5226758
+
 size of format chunck: 16
+
 WAVE type format: 1
+
 mono/stereo: 2
+
 sample rate: 44100
+
 bytes/sec: 176400
+
 block alignment: 4
+
 bits/sample: 16
+
 size of data chunk: 5226496
+
 $
 
 - Example of bad format:
 
 $ ./wavproc < bad_sfc.wav
+
 size of file: 133
+
 size of format chunck: 18
+
 Error! size of format chunck should be 16
+
 $
