@@ -9,7 +9,7 @@ Some introductive info:
 	sound in a computer, we must first digitize it from it analog nature. 
 	This digitization is done by recording the value of the function
 	of the signal at distinct equidistant instants of time. 
-	The values ​​of the function can then be considered to correspond to the
+	The values of the function can then be considered to correspond to the
 	intensity of the sound at the corresponding times.
 	
 2)	Provided that the record of successive values of the function is dense enough,
