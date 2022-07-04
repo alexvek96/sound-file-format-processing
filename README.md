@@ -27,44 +27,58 @@ Some introductive info:
 	
 	• 4 bytes with the characters “RIFF” (initials of Resource Interchange File Format, which is
 	the standard used to structure .wav files).
+	
 	• 4 bytes, named “SizeOfFile”, indicating the size of the file, which is actually the
 	number of bytes that follow until the end of the file. Essentially, it's the size
 	of the file on disk minus 8 bytes, i.e. those occupying the current field and the
 	previous (“RIFF”). It is noted that the representation of unsigned integers is by
 	order from least significant byte to most significant (little-endian standard).
 	That is, the integer 0xA3870FB9 is represented in order by the bytes 0xB9, 0x0F, 0x87, 0xA3.
+	
 	• 4 bytes with the characters “WAVE”, indicating the specific file subcategory
 	which follows the “RIFF” standard.
+	
 	• 4 bytes with the characters “fmt” (pay attention to the last space character),
 	which indicate the start of the format chunk of the file.
+	
 	• 4 bytes for the space occupied by the data of the format section that will follow
 	In the files processed by the current code, the value of this field will be
 	always 16 (0x00000010). And here the little-endian standard is applied, i.e. the hex-number
 	stored with the sequence of bytes 0x10, 0x00, 0x00, 0x00.
+	
 	• 2 bytes for the .wav format type. For the present work, this will be always equal to 1 (0x0001)
 	and will be stored in little-endian order, i.e. with bytes 0x01, 0x00.
+	
 	• 2 bytes, lets name them “MonoStereo”, for whether the sound is monophonic (value 0x0001) or
 	stereophonic with two channels (value 0x0002). Beware of little-endian, with regard to all
 	integer values that follow.
+	
 	• 4 bytes, “SampleRate”, for the sampling rate, i.e. how many values per second
 	of the analog audio function have been recorded in the digital file.
+	
 	• 4 bytes, “BytesPerSec”, for the number of bytes per second of audio, that have been
 	registered into the sound file.
+	
 	• 2 bytes, “BlockAlign”, for the number of bytes required for the entry
 	of the audio information at one time, for all channels together. Note that always
 	is [BytesPerSec = SampleRate × BlockAlign].
+	
 	• 2 bytes, “BitsPerSample”, for the number of bits required for the registring
 	of the sound information at one distinct moment in time, for a single channel. Within the current
 	project, this value will be either 8 (0x0008), or 16 (0x0010). For BitsPerSample=8, the sound
 	volume is an unsigned integer in the interval [0,255], while for BitsPerSample=16, loudness 
 	is a signed integer in the interval [-32768,32767].
 	Note that [BlockAlign = BitsPerSample/8 × MonoStereo] should always be true.
+	
 	• 4 bytes with the characters “data”, indicating the start of the data section (data
 	chunk) of the file.
+	
 	• 4 bytes, “SizeOfData”, for the space occupied by the segment data that follows.
+	
 	• Digitized audio data in chronological order. In the case of stereo sound
 	with two channels, for each time moment, there is a pair of data, with the first element
 	corresponding to the left channel and the second element corresponding to the right channel.
+	
 	• After the end of the audio data, there may be extra data info regarding the specific .wav file.
 	We will not stick to them.
 	
