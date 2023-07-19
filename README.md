@@ -1,3 +1,5 @@
+# Sound file format processing
+
 This is a project of 1st/8 semester in NKUA IT Department (Sep 2020 - Feb 2021).
 Some introductive info:
 
@@ -109,7 +111,7 @@ Some introductive info:
 	
 	$
 	
-Objectives:
+## Objectives:
 
 The code must read the data from a .wav file using getchar() and decide if the file represents a
 .wav file according to the anticipated format. Results of bad or good format shall be printed
